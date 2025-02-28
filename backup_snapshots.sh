@@ -1,6 +1,6 @@
 #Filename: backup_snapshots.sh
 #Author: Kyle McColgan
-#Date: 17 February 2025
+#Date: 28 February 2025
 #Description: Script to sync snapshots between local hosts.
 
 #!/bin/bash
@@ -27,7 +27,7 @@ fi
 
 # Rsync Snapper Snapshots to Samba share
 echo "Backing up Snapper snapshots to Samba share..."
-sudo rsync -avz $SNAPSHOT_DIR $BACKUP_DIR
+sudo rsync -avz --one-file-system --exclude="$BACKUP_DIR/" --exclude="$SNAPSHOT_DIR/*/snapshot/mnt/samba_backups" $SNAPSHOT_DIR/ $BACKUP_DIR/
 
 # Check if rsync was successful
 if [ $? -eq 0 ]; then

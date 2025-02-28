@@ -1,7 +1,7 @@
 
 # Automated Snapper Backup System
 
-This project automates the backup of Snapper snapshots from an OpenSUSE Linux system to a Samba server, ensuring secure and efficient off-site backups. The backups are transferred via `rsync` to a Raspberry Pi running a Samba server.
+This project automates the backup of Snapper snapshots from a Linux system to a Samba server, ensuring secure and efficient off-site backups. The backups are transferred via `rsync` to a local host running a Samba server.
 
 ## Prerequisites
 
@@ -9,7 +9,7 @@ Before using this backup system, ensure you have the following:
 
 - **OpenSUSE Linux** (or similar Linux distributions)
 - **Snapper** configured for snapshot management
-- A **Samba server** (in this case, running on a Raspberry Pi)
+- A **Samba server** (active on the local network)
 - **rsync** installed on your OpenSUSE system
 - **CIFS** utilities for mounting the Samba share
 
@@ -18,10 +18,10 @@ Before using this backup system, ensure you have the following:
 1. **Ensure Snapper is configured:**
    Make sure Snapper snapshots are set up and configured for your system. Snapper should be actively taking snapshots of the file systems you want to back up.
 
-2. **Set up the Samba share on the Raspberry Pi:**
-   On the Raspberry Pi, set up a Samba share that will act as the destination for your backups. This will involve configuring `/etc/samba/smb.conf` and ensuring the share is accessible from the OpenSUSE system.
+2. **Set up the Samba share:**
+   On the Raspberry Pi, set up a Samba share that will act as the destination for your backups. This will involve configuring `/etc/samba/smb.conf` and ensuring the share is accessible from the host system.
 
-3. **Create a mount point on your OpenSUSE system:**
+3. **Create a mount point on your host system:**
    Create a directory to mount the Samba share:
 
    ```bash
