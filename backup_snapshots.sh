@@ -47,7 +47,7 @@ for folder in "${INCLUDE_FOLDERS[@]}"; do
 
     if [ -d "$SOURCE" ]; then
         echo "Backing up $SOURCE to $DESTINATION..."
-        sudo rsync -avz --one-file-system "$SOURCE/" "$DESTINATION/"
+        sudo rsync -avz --one-file-system --exclude='.*' "$SOURCE/" "$DESTINATION/"
     else
         echo "Skipping $folder, directory not found in snapshot."
     fi
